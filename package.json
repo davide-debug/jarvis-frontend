@@ -1,0 +1,4 @@
+{
+  "name": "jarvis3-frontend",
+  "dependencies": {"next": "latest", "react": "latest", "react-dom": "latest"}
+}

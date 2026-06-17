@@ -27,7 +27,7 @@ export default function Page() {
   
   const confirmDeletion = async () => {
     if(!pendingDeleteId) return;
-    await supabase.from(products).delete().eq('id', pendingDeleteId);
+    await supabase.from('products').delete().eq('id', pendingDeleteId);
     setPendingDeleteId(null);
     setConfirmOpen(false);
     load();
@@ -81,15 +81,5 @@ export default function Page() {
       />
 
     </div>
-      <ConfirmDialog
-        open={confirmOpen}
-        title="Confermi l'eliminazione?"
-        description="Questa azione non è reversibile."
-        confirmText="Elimina"
-        cancelText="Annulla"
-        onConfirm={confirmDeletion}
-        onCancel={()=>{ setPendingDeleteId(null); setConfirmOpen(false); }}
-      />
-
   )
 }

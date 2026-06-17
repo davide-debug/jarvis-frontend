@@ -11,6 +11,7 @@ export default function RootLayout({ children }) {
           <h1 className="text-2xl font-bold mb-6">Jarvis</h1>
           <nav className="space-y-3">
             <Link href="/" className="block hover:text-blue-400">📊 Dashboard</Link>
+            <Link href="/jarvis" className="block hover:text-blue-400">🎙️ Parla con Jarvis</Link>
             <Link href="/clients" className="block hover:text-blue-400">👥 Clients</Link>
             <Link href="/kanban" className="block hover:text-blue-400">📌 Kanban</Link>
             <Link href="/prodotti" className="block hover:text-blue-400">📦 Prodotti</Link>

@@ -110,15 +110,5 @@ export default function Page() {
       />
 
     </div>
-      <ConfirmDialog
-        open={confirmOpen}
-        title="Confermi l'eliminazione?"
-        description="Questa azione non è reversibile."
-        confirmText="Elimina"
-        cancelText="Annulla"
-        onConfirm={confirmDeletion}
-        onCancel={()=>{ setPendingDeleteId(null); setConfirmOpen(false); }}
-      />
-
   )
 }

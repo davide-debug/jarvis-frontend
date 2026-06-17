@@ -35,6 +35,14 @@ export default function Page() {
     load();
   };
 
+  const confirmDeletion = async () => {
+    if(!pendingDeleteId) return;
+    await supabase.from('tasks').delete().eq('id', pendingDeleteId);
+    setPendingDeleteId(null);
+    setConfirmOpen(false);
+    load();
+  };
+
   return (
     <div className="grid gap-6">
       <div className="card">
@@ -76,15 +84,5 @@ export default function Page() {
       />
 
     </div>
-      <ConfirmDialog
-        open={confirmOpen}
-        title="Confermi l'eliminazione?"
-        description="Questa azione non è reversibile."
-        confirmText="Elimina"
-        cancelText="Annulla"
-        onConfirm={confirmDeletion}
-        onCancel={()=>{ setPendingDeleteId(null); setConfirmOpen(false); }}
-      />
-
   )
 }

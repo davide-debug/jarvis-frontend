@@ -12,6 +12,7 @@ export default function RootLayout({ children }) {
           <nav className="space-y-3">
             <Link href="/" className="block hover:text-blue-400">📊 Dashboard</Link>
             <Link href="/clients" className="block hover:text-blue-400">👥 Clients</Link>
+            <Link href="/chiamate" className="block hover:text-blue-400">📞 Chiamate</Link>
             <Link href="/kanban" className="block hover:text-blue-400">📌 Kanban</Link>
             <Link href="/prodotti" className="block hover:text-blue-400">📦 Prodotti</Link>
             <Link href="/costi" className="block hover:text-blue-400">💶 Costi</Link>

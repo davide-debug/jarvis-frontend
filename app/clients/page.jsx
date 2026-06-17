@@ -30,7 +30,7 @@ export default function Page() {
   
   const confirmDeletion = async () => {
     if(!pendingDeleteId) return;
-    await supabase.from(clients).delete().eq('id', pendingDeleteId);
+    await supabase.from('clients').delete().eq('id', pendingDeleteId);
     setPendingDeleteId(null);
     setConfirmOpen(false);
     load();

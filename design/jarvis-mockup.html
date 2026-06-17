@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jarvis — Design Mockup (FM style)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'] },
+        colors: {
+          base:   '#11131b',   /* app background */
+          panel:  '#1b2030',   /* cards/panels */
+          panel2: '#222a3d',   /* raised / table header */
+          line:   '#313a52',   /* borders */
+          teal:   '#19c3b1',   /* primary accent (FM teal) */
+          grape:  '#8b5cf6',   /* secondary accent (purple) */
+          good:   '#5fd068',
+          warn:   '#f6c453',
+          bad:    '#ff6b6b',
+          tx:     '#eef1f7',   /* primary text */
+          tx2:    '#a6b0c3',   /* secondary text */
+        },
+      },
+    },
+  }
+</script>
+<style>
+  body{ background:#11131b; }
+  .panel{ background:#1b2030; border:1px solid #313a52; }
+  ::-webkit-scrollbar{ width:9px; height:9px } ::-webkit-scrollbar-thumb{ background:#313a52; border-radius:8px }
+  .stat{ display:inline-flex; min-width:1.6rem; justify-content:center; font-weight:700; border-radius:.3rem; padding:.05rem .35rem; }
+  @keyframes pulse{ 0%,100%{ opacity:.45 } 50%{ opacity:1 } }
+  .live-dot{ animation: pulse 1.5s ease-in-out infinite; }
+</style>
+</head>
+<body class="font-sans text-tx antialiased">
+
+<div class="flex h-screen overflow-hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="w-60 shrink-0 flex flex-col" style="background:#141826;border-right:1px solid #313a52;">
+    <div class="h-16 flex items-center gap-3 px-5 border-b border-line">
+      <div class="w-9 h-9 rounded-lg grid place-items-center font-extrabold text-base text-base" style="background:linear-gradient(135deg,#19c3b1,#8b5cf6);">J</div>
+      <div class="font-extrabold tracking-wide text-lg text-tx">JARVIS</div>
+    </div>
+
+    <nav class="flex-1 px-3 py-4 space-y-0.5 text-sm font-medium">
+      <a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-base text-tx" style="background:#19c3b1;color:#0c1018;">
+        <span class="w-5 text-center">▦</span> Dashboard</a>
+      <a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-tx2 hover:text-tx hover:bg-white/5 transition"><span class="w-5 text-center">◍</span> Clients</a>
+      <a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-tx2 hover:text-tx hover:bg-white/5 transition"><span class="w-5 text-center">▤</span> Kanban</a>
+      <a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-tx2 hover:text-tx hover:bg-white/5 transition"><span class="w-5 text-center">▣</span> Prodotti</a>
+      <a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-tx2 hover:text-tx hover:bg-white/5 transition"><span class="w-5 text-center">€</span> Costi</a>
+      <a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-tx2 hover:text-tx hover:bg-white/5 transition"><span class="w-5 text-center">◎</span> Obiettivi</a>
+      <a class="flex items-center gap-3 px-3 py-2.5 rounded-md text-tx2 hover:text-tx hover:bg-white/5 transition"><span class="w-5 text-center">⚡</span> Realtime
+        <span class="ml-auto flex items-center gap-1 text-[10px] text-good"><span class="live-dot w-1.5 h-1.5 rounded-full bg-good"></span>LIVE</span></a>
+    </nav>
+
+    <div class="m-3 p-3 rounded-lg panel">
+      <div class="flex items-center justify-between text-[11px] text-tx2 mb-2"><span>System status</span><span class="text-good font-semibold">ONLINE</span></div>
+      <div class="h-1.5 rounded-full bg-line overflow-hidden"><div class="h-full w-[82%]" style="background:linear-gradient(90deg,#19c3b1,#8b5cf6)"></div></div>
+      <div class="mt-2 text-[10px] text-tx2">Next.js 14 · Tailwind · Supabase</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="flex-1 flex flex-col min-w-0">
+    <!-- HEADER -->
+    <header class="h-16 shrink-0 flex items-center justify-between px-6" style="background:#161b29;border-bottom:1px solid #313a52;">
+      <div>
+        <h1 class="text-lg font-bold text-tx leading-tight">Dashboard</h1>
+        <p class="text-xs text-tx2">Buongiorno Davide — situazione di oggi</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="hidden md:flex items-center gap-2 px-3 h-9 rounded-md panel text-sm text-tx2 w-60"><span>⌕</span><span>Cerca o chiedi a Jarvis…</span></div>
+        <button class="w-9 h-9 rounded-md panel grid place-items-center hover:border-teal transition relative">🔔<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-teal"></span></button>
+        <div class="w-9 h-9 rounded-md grid place-items-center font-bold text-base" style="background:linear-gradient(135deg,#19c3b1,#8b5cf6)">D</div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="flex-1 overflow-y-auto p-6 space-y-6">
+
+      <!-- KPI ROW -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div class="panel rounded-lg p-4 border-l-4" style="border-left-color:#19c3b1">
+          <div class="text-xs uppercase tracking-wider text-tx2">Clienti attivi</div>
+          <div class="mt-1 text-3xl font-extrabold text-tx">128</div>
+          <div class="mt-1 text-xs text-good font-semibold">▲ 12% vs mese scorso</div>
+        </div>
+        <div class="panel rounded-lg p-4 border-l-4" style="border-left-color:#8b5cf6">
+          <div class="text-xs uppercase tracking-wider text-tx2">Ricavi mese</div>
+          <div class="mt-1 text-3xl font-extrabold text-tx">€ 42.8k</div>
+          <div class="mt-1 text-xs text-good font-semibold">▲ 8% vs target</div>
+        </div>
+        <div class="panel rounded-lg p-4 border-l-4" style="border-left-color:#f6c453">
+          <div class="text-xs uppercase tracking-wider text-tx2">Task aperti</div>
+          <div class="mt-1 text-3xl font-extrabold text-tx">17</div>
+          <div class="mt-1 text-xs text-warn font-semibold">5 in scadenza</div>
+        </div>
+        <div class="panel rounded-lg p-4 border-l-4" style="border-left-color:#19c3b1">
+          <div class="text-xs uppercase tracking-wider text-tx2">Obiettivi Q2</div>
+          <div class="mt-1 text-3xl font-extrabold text-tx">73%</div>
+          <div class="mt-1 text-xs text-tx2 font-semibold">in linea</div>
+        </div>
+      </section>
+
+      <!-- CHART + ACTIVITY -->
+      <section class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <div class="xl:col-span-2 panel rounded-lg p-5">
+          <div class="flex items-center justify-between mb-5">
+            <div><h3 class="font-bold text-tx">Andamento ricavi / costi</h3><p class="text-xs text-tx2">Ultimi 7 mesi</p></div>
+            <div class="flex gap-2 text-xs font-semibold">
+              <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-teal"></span>Ricavi</span>
+              <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-grape"></span>Costi</span>
+            </div>
+          </div>
+          <div class="h-44 flex items-end gap-3">
+            <!-- bars: each month, value labels for readability -->
+            <div class="flex-1 flex flex-col items-center"><div class="w-full flex gap-1 items-end h-40"><div class="flex-1 rounded-t bg-teal" style="height:55%"></div><div class="flex-1 rounded-t bg-grape" style="height:35%"></div></div><span class="text-[10px] text-tx2 mt-1">Gen</span></div>
+            <div class="flex-1 flex flex-col items-center"><div class="w-full flex gap-1 items-end h-40"><div class="flex-1 rounded-t bg-teal" style="height:62%"></div><div class="flex-1 rounded-t bg-grape" style="height:40%"></div></div><span class="text-[10px] text-tx2 mt-1">Feb</span></div>
+            <div class="flex-1 flex flex-col items-center"><div class="w-full flex gap-1 items-end h-40"><div class="flex-1 rounded-t bg-teal" style="height:48%"></div><div class="flex-1 rounded-t bg-grape" style="height:44%"></div></div><span class="text-[10px] text-tx2 mt-1">Mar</span></div>
+            <div class="flex-1 flex flex-col items-center"><div class="w-full flex gap-1 items-end h-40"><div class="flex-1 rounded-t bg-teal" style="height:78%"></div><div class="flex-1 rounded-t bg-grape" style="height:50%"></div></div><span class="text-[10px] text-tx2 mt-1">Apr</span></div>
+            <div class="flex-1 flex flex-col items-center"><div class="w-full flex gap-1 items-end h-40"><div class="flex-1 rounded-t bg-teal" style="height:70%"></div><div class="flex-1 rounded-t bg-grape" style="height:46%"></div></div><span class="text-[10px] text-tx2 mt-1">Mag</span></div>
+            <div class="flex-1 flex flex-col items-center"><div class="w-full flex gap-1 items-end h-40"><div class="flex-1 rounded-t bg-teal" style="height:88%"></div><div class="flex-1 rounded-t bg-grape" style="height:52%"></div></div><span class="text-[10px] text-tx2 mt-1">Giu</span></div>
+            <div class="flex-1 flex flex-col items-center"><div class="w-full flex gap-1 items-end h-40"><div class="flex-1 rounded-t bg-teal" style="height:95%"></div><div class="flex-1 rounded-t bg-grape" style="height:58%"></div></div><span class="text-[10px] text-tx2 mt-1">Lug</span></div>
+          </div>
+          <p class="mt-3 text-[11px] text-tx2">↑ in produzione questo sarà un grafico <b class="text-tx">Recharts</b> interattivo con tooltip.</p>
+        </div>
+
+        <div class="panel rounded-lg p-5 flex flex-col">
+          <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-tx">Activity</h3><span class="flex items-center gap-1.5 text-[11px] text-good font-semibold"><span class="live-dot w-2 h-2 rounded-full bg-good"></span>realtime</span></div>
+          <ul class="space-y-3 text-sm">
+            <li class="flex gap-3"><span class="text-teal mt-0.5">●</span><div><p class="text-tx">Nuovo cliente <b>Wesionary</b></p><span class="text-[11px] text-tx2">14:32</span></div></li>
+            <li class="flex gap-3"><span class="text-grape mt-0.5">●</span><div><p class="text-tx">Task "Deploy v2" → <b>Done</b></p><span class="text-[11px] text-tx2">14:05</span></div></li>
+            <li class="flex gap-3"><span class="text-teal mt-0.5">●</span><div><p class="text-tx">Costo aggiunto <b>€ 320</b></p><span class="text-[11px] text-tx2">13:48</span></div></li>
+            <li class="flex gap-3"><span class="text-good mt-0.5">●</span><div><p class="text-tx">Obiettivo Q2 al <b>73%</b></p><span class="text-[11px] text-tx2">12:10</span></div></li>
+          </ul>
+          <button class="mt-auto pt-4 text-xs text-teal hover:underline text-left font-semibold">Apri stream completo →</button>
+        </div>
+      </section>
+
+      <!-- DATA TABLE (FM-style, dense + colored stats) -->
+      <section class="panel rounded-lg overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-3 border-b border-line">
+          <h3 class="font-bold text-tx">Clienti — panoramica</h3>
+          <button class="text-xs font-semibold px-3 py-1.5 rounded-md text-base" style="background:#19c3b1;color:#0c1018;">+ Nuovo cliente</button>
+        </div>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left text-tx2 text-xs uppercase tracking-wider" style="background:#222a3d;">
+              <th class="px-5 py-2.5 font-semibold">Cliente</th>
+              <th class="px-5 py-2.5 font-semibold">Azienda</th>
+              <th class="px-5 py-2.5 font-semibold text-center">Task</th>
+              <th class="px-5 py-2.5 font-semibold text-center">Salute</th>
+              <th class="px-5 py-2.5 font-semibold text-right">Valore</th>
+              <th class="px-5 py-2.5 font-semibold text-right">Azioni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-line hover:bg-white/5 transition">
+              <td class="px-5 py-3 font-medium">Marco Rossi</td><td class="px-5 py-3 text-tx2">Wesionary</td>
+              <td class="px-5 py-3 text-center"><span class="stat" style="background:rgba(95,208,104,.18);color:#5fd068">3</span></td>
+              <td class="px-5 py-3 text-center"><span class="stat" style="background:rgba(95,208,104,.18);color:#5fd068">92</span></td>
+              <td class="px-5 py-3 text-right font-semibold">€ 12.400</td>
+              <td class="px-5 py-3 text-right"><button class="text-bad hover:underline text-xs">Elimina</button></td>
+            </tr>
+            <tr class="border-t border-line hover:bg-white/5 transition" style="background:rgba(255,255,255,.02)">
+              <td class="px-5 py-3 font-medium">Anna Bianchi</td><td class="px-5 py-3 text-tx2">Acme Srl</td>
+              <td class="px-5 py-3 text-center"><span class="stat" style="background:rgba(246,196,83,.18);color:#f6c453">7</span></td>
+              <td class="px-5 py-3 text-center"><span class="stat" style="background:rgba(246,196,83,.18);color:#f6c453">64</span></td>
+              <td class="px-5 py-3 text-right font-semibold">€ 8.900</td>
+              <td class="px-5 py-3 text-right"><button class="text-bad hover:underline text-xs">Elimina</button></td>
+            </tr>
+            <tr class="border-t border-line hover:bg-white/5 transition">
+              <td class="px-5 py-3 font-medium">Luca Verdi</td><td class="px-5 py-3 text-tx2">Globex</td>
+              <td class="px-5 py-3 text-center"><span class="stat" style="background:rgba(255,107,107,.18);color:#ff6b6b">12</span></td>
+              <td class="px-5 py-3 text-center"><span class="stat" style="background:rgba(255,107,107,.18);color:#ff6b6b">38</span></td>
+              <td class="px-5 py-3 text-right font-semibold">€ 3.200</td>
+              <td class="px-5 py-3 text-right"><button class="text-bad hover:underline text-xs">Elimina</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</div>
+</body>
+</html>
